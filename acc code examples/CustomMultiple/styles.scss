@@ -1,0 +1,173 @@
+@import "styles/_extensions.scss";
+
+%theme-color {
+  background: var(--input-hover) !important;
+  color: var(--content-hover-foreground) !important;
+}
+
+.with-themed-border-and-label {
+  strong {
+    padding-left: 5px;
+  }
+}
+
+.custom-multiple {
+  height: 34px;
+  position: relative;
+  color: var(--button-foreground);
+  border-color: var(--button-border) !important;
+  cursor: pointer;
+  &--disabled {
+    opacity: 0.8;
+  }
+  &__editable-part {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 5px;
+    width: 100%;
+    background: var(--input-background);
+    color: var(--input-foreground);
+    &:hover {
+      @extend%theme-color;
+    }
+  }
+  &__icon-wrapper {
+    @extend%flex-center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: inherit;
+    width: 32px;
+    color: var(--input-foreground);
+    border-left: 1px solid transparent;
+    justify-content: center !important;
+    .custom-multiple__icon {
+      font-size: 12px !important;
+    }
+    &--with-border {
+      border-left-color: var(--input-border);
+    }
+    i {
+      transform: translate(2px);
+    }
+    &:not(.disabled):hover {
+      background: var(--input-hover);
+      color: var(--input-hover-foreground);
+    }
+  }
+  &__input {
+    padding-right: 33px;
+    background: var(--input-background) !important;
+    color: var(--input-foreground);
+  }
+  &__config {
+    max-height: 180px;
+    overflow-y: auto;
+    position: absolute;
+    top: 34px;
+    left: -1px;
+    right: -1px;
+    background: #fff;
+    padding-bottom: 1px;
+    z-index: 3;
+    border: 1px solid var(--input-border);
+    background: var(--input-background);
+  }
+  &__label {
+    width: 100%;
+    display: flex;
+  }
+  &__text {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+  }
+  &__item {
+    padding: 10px 0 9px;
+    display: flex;
+    line-height: 1em !important;
+    overflow: hidden;
+    align-items: center;
+    color: var(--input-foreground);
+    font-size: 12px;
+    &--hover {
+      font-size: 14px;
+      padding-left: 5px;
+      &:hover {
+        @extend%theme-color;
+      }
+    }
+  }
+  &__checkbox {
+    margin: 0px 10px 0 0;
+    cursor: pointer;
+    &:hover {
+      label {
+        &::before {
+          border: 1px solid black !important;
+        }
+        &::after {
+          border: 1px solid black !important;
+        }
+      }
+    }
+    label {
+      padding: 2px !important;
+      height: max-content;
+      width: 100% !important;
+      &::before {
+        top: 0px;
+        left: 0px;
+        width: 16px !important;
+        height: 16px !important;
+        border: 1px solid var(--input-border) !important;
+        background: var(--input-background) !important;
+        border-radius: 0px !important;
+        // position: relative ;
+        display: inline-block !important;
+      }
+      &::after {
+        // position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 16px !important;
+        height: 16px !important;
+      }
+    }
+    &.disabled {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+  &__checkbox.wh-with-labels {
+    width: 100% !important;
+    label::before {
+      margin-right: 10px !important;
+    }
+    label::after {
+      top: 0px;
+      left: 0px;
+      margin-right: 10px !important;
+    }
+  }
+  &__input {
+    padding-left: 14px;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+  }
+  &.disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+.checkbox-field > .custom-multiple__checkbox > label::after {
+  // top: 11px !important;
+  left: 0px !important;
+}

@@ -1,0 +1,90 @@
+@import "styles/_extensions.scss";
+
+$addBtnRightMargin: 1.5rem;
+
+.header-control-panel {
+  display: flex !important;
+  flex-direction: row !important;
+  &__title-box {
+    align-self: center;
+  }
+  &__title {
+    margin-right: 10px;
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--page-foreground);
+  }
+  &__plus {
+    &.ui.button {
+      position: relative;
+      margin-right: $addBtnRightMargin;
+      &:after {
+        display: block;
+        content: "";
+        border-right: 1px solid var(--page-foreground);
+        position: absolute;
+        right: $addBtnRightMargin/2 * -1; // half of add button right margin
+        top: 0;
+        bottom: 0;
+      }
+    }
+    &--withoutDivide.ui.button {
+      margin-right: 0;
+      &:after {
+        display: none;
+      }
+    }
+  }
+  &__left-side {
+    padding-left: 10px;
+  }
+  &__drop-down {
+    font-size: 18px !important;
+    .text {
+      color: var(--page-foreground);
+    }
+    i {
+      color: var(--page-foreground);
+    }
+    .visible.menu.transition {
+      .item {
+        @extend %input-themed;
+        cursor: pointer;
+        .text {
+          color: var(--input-foreground);
+        }
+        &.selected.active,
+        &:hover {
+          @extend %input-hover-themed;
+          .text {
+            color: var(--input-hover-foreground);
+          }
+        }
+      }
+    }
+
+    .dropdown.icon {
+      margin-left: 5px !important;
+    }
+  }
+  &__simple-button-rounded {
+    border-radius: 15px !important;
+  }
+  &__field-drop-down {
+    width: 100%;
+  }
+
+  &__right-side-menu-container {
+    display: inline-flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  & .vertical-separator {
+    height: 35px;
+    display: inline-block;
+    width: 1px;
+    background-color: var(--page-foreground);
+    margin-right: 10px;
+  }
+}
